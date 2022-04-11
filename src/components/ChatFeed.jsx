@@ -52,6 +52,13 @@ const ChatFeed = (props) => {
 
     }
 
+    const logout = () => {
+        localStorage.removeItem('username');
+        localStorage.removeItem('password');
+
+        window.location.reload();
+    }
+
     if (!chat) return '...loading';
 
     return (
@@ -63,6 +70,10 @@ const ChatFeed = (props) => {
                 <div className="chat-subtitle">
                     {chat.people.map((person) => ` ${person.person.username}`)}
                 </div>
+                <div className="logout-button">
+                    <button onClick={logout}>Logout</button>
+                </div>
+
 
                 {renderMessages()}
                 <div style={{ height: '100px' }} />
